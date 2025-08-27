@@ -196,7 +196,7 @@ export default function Products() {
                   <p className="text-gray-600 mb-2 text-xs flex-1 line-clamp-2">{product.description}</p>
                   <div className="flex items-center justify-between mt-auto">
                     <span className="text-sm md:text-base font-bold text-[#dd2581]">
-                      ${(product.price * 0.00027).toFixed(2)}
+                      ${product.price.toFixed(2)}
                     </span>
                     <button
                       onClick={() => handleAddToCart(product)}

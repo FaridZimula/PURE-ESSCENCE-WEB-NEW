@@ -5,7 +5,7 @@ export const bedroomProducts = [
   {
     id: 'bedroom-1',
     name: 'Men\'s Massage Cream',
-    price: 27935,
+    price: 7.54,
     image: "/images/natural images/Men's Massage Cream.jpg",
     category: 'Bedroom Products',
     description: 'Therapeutic massage cream for men\'s wellness'
@@ -13,7 +13,7 @@ export const bedroomProducts = [
   {
     id: 'bedroom-2',
     name: 'YLN Men\'s 55+',
-    price: 36297,
+    price: 9.80,
     image: "/images/natural images/YLN Men's 55+.jpg",
     category: 'Bedroom Products',
     description: 'Specialized supplement for men over 55'
@@ -21,7 +21,7 @@ export const bedroomProducts = [
   {
     id: 'bedroom-3',
     name: 'Fertility Pro Women',
-    price: 41884,
+    price: 11.31,
     image: '/images/natural images/Fertility Pro Womem.jpg',
     category: 'Bedroom Products',
     description: 'Fertility support supplement for women'
@@ -29,7 +29,7 @@ export const bedroomProducts = [
   {
     id: 'bedroom-4',
     name: 'Sadoer Enlarging Breast Essence',
-    price: 25123,
+    price: 6.78,
     image: '/images/natural images/Sadoer Enlarging Breast Essence.jpg',
     category: 'Bedroom Products',
     description: 'Natural enhancement gummies for body contouring'
@@ -37,7 +37,7 @@ export const bedroomProducts = [
   {
     id: 'bedroom-5',
     name: 'Detox Skinny Herb Tea',
-    price: 25223,
+    price: 6.81,
     image: '/images/natural images/Detox Skinny Heb Tea.jpg',
     category: 'Bedroom Products',
     description: 'Natural libido enhancement for women\'s wellness'
@@ -45,7 +45,7 @@ export const bedroomProducts = [
   {
     id: 'bedroom-6',
     name: 'Testosterone Booster',
-    price: 41900,
+    price: 11.31,
     image: '/images/natural images/Testerone Booster.jpg',
     category: 'Bedroom Products',
     description: 'Maca-based supplement for natural enhancement'
@@ -53,7 +53,7 @@ export const bedroomProducts = [
   {
     id: 'bedroom-7',
     name: "Men's Multi",
-    price: 36300,
+    price: 9.81,
     image: '/images/natural images/Mens Multi.jpg',
     category: 'Bedroom Products',
     description: 'Weight management supplement with garcinia cambogia'
@@ -61,7 +61,7 @@ export const bedroomProducts = [
   {
     id: 'bedroom-8',
     name: 'Fertil Pro for men',
-    price: 41884,
+    price: 11.31,
     image: '/images/natural images/Fertile Pro For Men.jpg',
     category: 'Bedroom Products',
     description: 'Natural enhancement oil for men\'s confidence'
@@ -69,7 +69,7 @@ export const bedroomProducts = [
   {
     id: 'bedroom-9',
     name: 'Hip Enlargement Gummies',
-    price: 36294,
+    price: 9.80,
     image: '/images/natural images/Hip Enlargement Gummies.jpg',
     category: 'Bedroom Products',
     description: 'Natural enhancement gummies for body contouring'
@@ -77,39 +77,39 @@ export const bedroomProducts = [
   {
     id: 'bedroom-10',
     name: 'Libido Booster For Women',
-    price: 36294,
+    price: 9.80,
     image: '/images/natural images/Libido Booster For Women.jpg',
     category: 'Bedroom Products',
     description: 'Natural enhancement gummies for body contouring'
   },
   {
-    id: 'bedroom-10',
+    id: 'bedroom-11',
     name: 'Extreme Curve Maca Plus',
-    price: 36294,
+    price: 9.80,
     image: '/images/natural images/Extreme cUrve Maca Plus.jpg',
     category: 'Bedroom Products',
     description: 'Natural enhancement gummies for body contouring'
   },
   {
-    id: 'bedroom-10',
+    id: 'bedroom-12',
     name: 'Fast Acting Garcinia Cambogia',
-    price: 36294,
+    price: 9.80,
     image: '/images/natural images/Fast Acting Garcinia Cambogia Description.jpg',
     category: 'Bedroom Products',
     description: 'Natural enhancement gummies for body contouring'
   },
   {
-    id: 'bedroom-10',
+    id: 'bedroom-13',
     name: 'Crazy life Penis Enlargemement Oil',
-    price: 30800,
+    price: 8.32,
     image: '/images/natural images/Crazy life Penis Enlargement Oil.jpg',
     category: 'Bedroom Products',
     description: 'Natural enhancement gummies for body contouring'
   },
   {
-    id: 'bedroom-10',
+    id: 'bedroom-14',
     name: 'Curves Extreme Syrup',
-    price: 30800,
+    price: 8.32,
     image: '/images/natural images/Curves Exreme Syrup Description.jpg',
     category: 'Bedroom Products',
     description: 'Natural enhancement gummies for body contouring'

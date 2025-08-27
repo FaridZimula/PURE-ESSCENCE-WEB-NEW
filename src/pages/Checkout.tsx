@@ -17,14 +17,14 @@ export default function Checkout() {
   });
 
   const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const totalUSD = (total * 0.00027).toFixed(2);
+  const totalUSD = total.toFixed(2);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Create WhatsApp message
     const orderDetails = cartItems.map(item => 
-      `${item.name} - Quantity: ${item.quantity} - Price: $${((item.price * 0.00027) * item.quantity).toFixed(2)}`
+      `${item.name} - Quantity: ${item.quantity} - Price: $${(item.price * item.quantity).toFixed(2)}`
     ).join('\n');
     
     const message = `
@@ -49,7 +49,7 @@ ${orderDetails}
 Please confirm this order. Thank you!
     `;
 
-    const whatsappUrl = `https://wa.me/256754507334?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/12046984791?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -106,7 +106,7 @@ Please confirm this order. Thank you!
                   <p className="text-gray-600">Quantity: {item.quantity}</p>
                 </div>
                 <p className="font-semibold text-[#f98203]">
-                  ${((item.price * 0.00027) * item.quantity).toFixed(2)}
+                  ${(item.price * item.quantity).toFixed(2)}
                 </p>
               </div>
             ))}

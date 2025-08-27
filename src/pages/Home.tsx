@@ -250,7 +250,7 @@ export default function Home() {
                   <h3 className="text-sm md:text-base font-bold text-[#dd2581] mb-1">{item.category}</h3>
                   <p className="text-gray-600 text-xs mb-2 line-clamp-2">{item.product.name}</p>
                   <p className="text-[#f98203] font-bold text-sm md:text-base">
-                    ${(item.product.price * 0.00027).toFixed(2)}
+                    ${item.product.price.toFixed(2)}
                   </p>
                 </div>
               </div>

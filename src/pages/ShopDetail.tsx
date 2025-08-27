@@ -87,7 +87,7 @@ export default function ShopDetail() {
           </div>
 
           <p className="text-2xl sm:text-3xl font-bold text-[#dd2581]">
-            UGX {product.price.toLocaleString()}
+            ${product.price.toFixed(2)}
           </p>
 
           <p className="text-gray-600 text-sm sm:text-base">{product.description}</p>
