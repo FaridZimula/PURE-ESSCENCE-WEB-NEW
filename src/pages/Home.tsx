@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Leaf, Truck, ShieldCheck, Phone, Package, Smile } from 'lucide-react';
+import { Leaf, Truck, ShieldCheck, Phone, Package, Smile, ShoppingCart, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { allProducts } from '../data/allProducts';
+import { useCart } from '../context/CartContext';
 
 const slides = [
   {
@@ -30,6 +31,18 @@ const promoImages = [
     image: "/images/Home Sliders/Lower image 2.jpg"
   }
 ];
+
+// Get trending products (first 8 products from different categories)
+const trendingProducts = [
+  allProducts.find(p => p.category === 'Skin Products' && p.name.includes('Lanorient')),
+  allProducts.find(p => p.category === 'Health Products' && p.name.includes('Organika')),
+  allProducts.find(p => p.category === 'Lotions' && p.name.includes('Vaseline')),
+  allProducts.find(p => p.category === 'Tablets' && p.name.includes('Vitamin C')),
+  allProducts.find(p => p.category === 'Bedroom Products' && p.name.includes('Testosterone')),
+  allProducts.find(p => p.category === 'Skin Products' && p.name.includes('PCA')),
+  allProducts.find(p => p.category === 'Health Products' && p.name.includes('Naka')),
+  allProducts.find(p => p.category === 'Lotions' && p.name.includes('Dr Teals'))
+].filter(Boolean).slice(0, 8);
 
 const categoryProducts = [
   {
@@ -129,11 +142,14 @@ const features = [
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  // const { addToCart } = useCart();
+  const { addToCart } = useCart();
+  const [addedToCart, setAddedToCart] = useState<{[key: string]: boolean}>({});
+  const [wishlist, setWishlist] = useState<{[key: string]: boolean}>({});
 
   // Carousel refs for sliding
   const testimonialsRef = useRef<HTMLDivElement>(null);
   const categoryRef = useRef<HTMLDivElement>(null);
+  const trendingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -151,6 +167,26 @@ export default function Home() {
       const width = ref.current.offsetWidth;
       ref.current.scrollBy({ left: dir * (width * 0.7), behavior: 'smooth' });
     }
+  };
+
+  const handleAddToCart = (product: any) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1
+    });
+    setAddedToCart(prev => ({ ...prev, [product.id]: true }));
+    
+    // Reset button after 2 seconds
+    setTimeout(() => {
+      setAddedToCart(prev => ({ ...prev, [product.id]: false }));
+    }, 2000);
+  };
+
+  const toggleWishlist = (productId: string) => {
+    setWishlist(prev => ({ ...prev, [productId]: !prev[productId] }));
   };
 
   return (
@@ -278,6 +314,124 @@ export default function Home() {
             whileTap={{ scale: 0.9 }}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
             onClick={() => scrollCarousel(categoryRef, 1)}
+            aria-label="Scroll right"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+            </svg>
+          </motion.button>
+        </div>
+      </section>
+
+      {/* Trending Items Section */}
+      <section className="max-w-7xl mx-auto px-4 py-16">
+        <div className="flex items-center justify-between mb-12">
+          <div className="flex-1 text-center">
+            <div className="relative inline-block">
+              <h2 className="text-4xl font-bold text-gray-800 mb-2">Trending Items</h2>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-[#dd2581] rounded-full"></div>
+            </div>
+          </div>
+          <Link 
+            to="/products" 
+            className="border-2 border-[#dd2581] text-[#dd2581] px-8 py-3 rounded-full font-bold hover:bg-[#dd2581] hover:text-white transition-all duration-300 shadow-md"
+          >
+            View More
+          </Link>
+        </div>
+        
+        <div className="relative">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
+            onClick={() => scrollCarousel(trendingRef, -1)}
+            aria-label="Scroll left"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+            </svg>
+          </motion.button>
+          
+          <div
+            ref={trendingRef}
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 px-12"
+            style={{ scrollSnapType: 'x mandatory' }}
+          >
+            {trendingProducts.map((product, idx) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="min-w-[280px] bg-white rounded-2xl shadow-lg overflow-hidden snap-center hover:shadow-2xl transition-all duration-300 flex-shrink-0 border border-gray-100"
+              >
+                {/* Product Image with Wishlist */}
+                <div className="relative p-6 pb-4">
+                  <div className="relative">
+                    <img 
+                      src={product.image} 
+                      alt={product.name} 
+                      className="w-full h-48 object-cover rounded-xl"
+                    />
+                    {/* NEW Badge */}
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-[#f98203] text-white px-3 py-1 rounded-full text-xs font-bold">
+                        TRENDING
+                      </span>
+                    </div>
+                    {/* Wishlist Heart */}
+                    <button
+                      onClick={() => toggleWishlist(product.id)}
+                      className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
+                    >
+                      <Heart 
+                        className={`w-4 h-4 ${
+                          wishlist[product.id] 
+                            ? 'fill-red-500 text-red-500' 
+                            : 'text-gray-400'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Product Info */}
+                <div className="px-6 pb-6">
+                  <h3 className="text-lg font-bold text-gray-800 mb-3 line-clamp-2 h-14">
+                    {product.name}
+                  </h3>
+                  
+                  {/* Pricing */}
+                  <div className="mb-4">
+                    <div className="text-2xl font-bold text-[#dd2581]">
+                      ${product.price.toFixed(2)}
+                    </div>
+                  </div>
+                  
+                  {/* Add to Cart Button */}
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className={`w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-xl font-bold transition-all duration-300 ${
+                      addedToCart[product.id] 
+                        ? 'bg-green-600 text-white' 
+                        : 'bg-[#dd2581] text-white hover:bg-[#f98203] hover:shadow-lg'
+                    }`}
+                  >
+                    <ShoppingCart className="w-5 h-5" />
+                    <span>{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
+            onClick={() => scrollCarousel(trendingRef, 1)}
             aria-label="Scroll right"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
