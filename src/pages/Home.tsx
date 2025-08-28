@@ -210,70 +210,80 @@ export default function Home() {
 
       {/* Shop By Category Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-[#dd2581] text-center flex-1">Shop by Category</h2>
-          <Link 
-            to="/products" 
-            className="hidden md:block text-gray-600 hover:text-[#dd2581] transition-colors border border-gray-300 px-4 py-2 rounded-full"
-          >
-            View More
-          </Link>
+        <div className="text-center mb-12">
+          <div className="relative inline-block">
+            <h2 className="text-4xl font-bold text-gray-800 mb-2">Shop by Category</h2>
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#dd2581] rounded-full"></div>
+          </div>
+          <div className="flex justify-end mt-8">
+            <Link 
+              to="/products" 
+              className="bg-[#dd2581] text-white px-8 py-3 rounded-full font-bold hover:bg-[#f98203] transition-colors shadow-lg"
+            >
+              View More
+            </Link>
+          </div>
         </div>
         
         <div className="relative">
-          <button
-            className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-[#dd2581] hover:text-white"
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
             onClick={() => scrollCarousel(categoryRef, -1)}
             aria-label="Scroll left"
           >
-            &#8592;
-          </button>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+            </svg>
+          </motion.button>
           
           <div
             ref={categoryRef}
-            className="flex gap-3 md:gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 px-12"
             style={{ scrollSnapType: 'x mandatory' }}
           >
             {categoryProducts.map((item, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="min-w-[180px] md:min-w-[220px] max-w-xs bg-white rounded-xl shadow-md overflow-hidden snap-center hover:shadow-lg transition-shadow flex-shrink-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="min-w-[280px] bg-white rounded-2xl shadow-lg overflow-hidden snap-center hover:shadow-2xl transition-all duration-300 flex-shrink-0 border border-gray-100"
               >
-                <div className="relative h-32 md:h-40">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.category}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-                <div className="p-3 md:p-4 text-center">
-                  <h3 className="text-sm md:text-base font-bold text-[#dd2581] mb-1">{item.category}</h3>
-                  <p className="text-gray-600 text-xs mb-2 line-clamp-2">{item.product.name}</p>
-                  <p className="text-[#f98203] font-bold text-sm md:text-base">
-                    ${item.product.price.toFixed(2)}
-                  </p>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{item.category}</h3>
+                  <Link 
+                    to="/products"
+                    className="inline-block bg-[#f98203] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#dd2581] transition-colors"
+                  >
+                    Shop Now
+                  </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
           
-          <button
-            className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-[#dd2581] hover:text-white"
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
             onClick={() => scrollCarousel(categoryRef, 1)}
             aria-label="Scroll right"
           >
-            &#8594;
-          </button>
-        </div>
-        
-        {/* Mobile View More Button */}
-        <div className="md:hidden text-center mt-6">
-          <Link 
-            to="/products" 
-            className="text-gray-600 hover:text-[#dd2581] transition-colors border border-gray-300 px-6 py-2 rounded-full inline-block"
-          >
-            View More
-          </Link>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+            </svg>
+          </motion.button>
         </div>
       </section>
 
