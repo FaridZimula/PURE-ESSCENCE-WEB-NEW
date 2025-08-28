@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import { allProducts, getProductsByCategory } from '../data/allProducts';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { Heart, ShoppingCart } from 'lucide-react';
 
 // Available product categories
 const categories = [
@@ -45,7 +46,9 @@ const categorySlides = {
 export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [currentPromoSlide, setCurrentPromoSlide] = useState(0);
+  const [sortBy, setSortBy] = useState('name');
   const [addedToCart, setAddedToCart] = useState<{[key: string]: boolean}>({});
+  const [wishlist, setWishlist] = useState<{[key: string]: boolean}>({});
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
@@ -70,6 +73,20 @@ export default function Products() {
     ? allProducts 
     : getProductsByCategory(selectedCategory);
 
+  // Sort products
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    switch (sortBy) {
+      case 'price-low':
+        return a.price - b.price;
+      case 'price-high':
+        return b.price - a.price;
+      case 'name':
+        return a.name.localeCompare(b.name);
+      default:
+        return 0;
+    }
+  });
+
   const handleAddToCart = (product: any) => {
     addToCart({ ...product, quantity: 1 });
     setAddedToCart(prev => ({ ...prev, [product.id]: true }));
@@ -78,6 +95,10 @@ export default function Products() {
     setTimeout(() => {
       setAddedToCart(prev => ({ ...prev, [product.id]: false }));
     }, 2000);
+  };
+
+  const toggleWishlist = (productId: string) => {
+    setWishlist(prev => ({ ...prev, [productId]: !prev[productId] }));
   };
 
   return (
@@ -155,59 +176,89 @@ export default function Products() {
 
         {/* Main Content */}
         <div className="lg:col-span-3">
-          {/* Products Count */}
-          <div className="mb-6">
-            <p className="text-gray-600">
-              Showing {filteredProducts.length} products
-              {selectedCategory !== 'All' && ` in ${selectedCategory}`}
-            </p>
+          {/* Page Header */}
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold text-gray-800">
+              {sortedProducts.length} Products
+            </h2>
+            <div className="flex items-center space-x-2">
+              <span className="text-gray-600 text-sm">Sort by</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#f98203] bg-white"
+              >
+                <option value="name">Name</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+              </select>
+            </div>
           </div>
           
           {/* Products Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-            {filteredProducts.map((product, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {sortedProducts.map((product, index) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col max-w-[280px] mx-auto"
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
               >
-                <div className="relative aspect-square w-full">
+                {/* Product Image with Wishlist */}
+                <div className="relative">
                   <img 
                     src={product.image} 
                     alt={product.name} 
-                    className="w-full h-full object-cover cursor-pointer"
+                    className="w-full h-48 object-cover cursor-pointer"
                     onClick={() => navigate(`/shop-detail/${product.id}`)}
                   />
-                  <div className="absolute top-2 left-2">
-                    <span className="bg-[#f98203] text-white px-2 py-0.5 rounded-full text-xs font-semibold">
-                      {product.category}
-                    </span>
-                  </div>
+                  {/* Wishlist Heart */}
+                  <button
+                    onClick={() => toggleWishlist(product.id)}
+                    className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
+                  >
+                    <Heart 
+                      className={`w-4 h-4 ${
+                        wishlist[product.id] 
+                          ? 'fill-red-500 text-red-500' 
+                          : 'text-gray-400'
+                      }`}
+                    />
+                  </button>
                 </div>
-                <div className="p-2 md:p-3 flex flex-col flex-1">
+                
+                {/* Product Info */}
+                <div className="p-4">
                   <h3
-                    className="text-xs md:text-sm font-bold text-gray-800 mb-1 cursor-pointer hover:text-[#dd2581] transition-colors line-clamp-2"
+                    className="text-sm font-semibold text-gray-800 mb-2 cursor-pointer hover:text-[#dd2581] transition-colors line-clamp-2"
                     onClick={() => navigate(`/shop-detail/${product.id}`)}
                   >
                     {product.name}
                   </h3>
-                  <p className="text-gray-600 mb-2 text-xs flex-1 line-clamp-2">{product.description}</p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="text-sm md:text-base font-bold text-[#dd2581]">
-                      ${product.price.toFixed(2)}
-                    </span>
-                    <button
-                      onClick={() => handleAddToCart(product)}
-                      className={`px-2 md:px-3 py-1 rounded-full font-semibold transition-all duration-300 text-xs ${
-                        addedToCart[product.id] 
-                          ? 'bg-[#dd2581] text-white' 
-                          : 'bg-[#dd2581] text-white hover:bg-[#f98203]'
-                      }`}
-                    >
-                      {addedToCart[product.id] ? 'Added!' : 'Add to Cart'}
-                    </button>
+                  
+                  {/* Pricing */}
+                  <div className="mb-3">
+                    <div className="text-lg font-bold text-gray-800">
+                      UGX {(product.price * 3700).toLocaleString()} <span className="text-xs text-gray-500">(3 pcs)</span>
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      UGX {(product.price * 3700 * 12).toLocaleString()} <span className="text-xs text-gray-500">(12 pcs)</span>
+                    </div>
+                  </div>
+                  
+                  {/* Add to Cart Button */}
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className={`w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-md font-semibold transition-all duration-300 ${
+                      addedToCart[product.id] 
+                        ? 'bg-green-600 text-white' 
+                        : 'bg-[#dd2581] text-white hover:bg-[#f98203]'
+                    }`}
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                    <span>{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
+                  </button>
                   </div>
                 </div>
               </motion.div>
@@ -215,7 +266,7 @@ export default function Products() {
           </div>
 
           {/* No products message */}
-          {filteredProducts.length === 0 && (
+          {sortedProducts.length === 0 && (
             <div className="text-center py-12">
               <p className="text-gray-500 text-base md:text-lg">No products found in this category.</p>
               <button
