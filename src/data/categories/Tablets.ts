@@ -5,7 +5,7 @@ export const tablets = [
   {
     id: 'tablet-1',
     name: 'Vitamin C Tablets',
-    price: 22000,
+    price: 5.94,
     image: '/images/natural images/Vitamin C.jpg',
     category: 'Tablets',
     description: 'High-potency vitamin C tablets for immune support'
@@ -13,7 +13,7 @@ export const tablets = [
   {
     id: 'tablet-2',
     name: 'Iron Gummies',
-    price: 35000,
+    price: 9.45,
     image: '/images/natural images/Iron Gummies 2.jpg',
     category: 'Tablets',
     description: 'Delicious iron gummies for energy and vitality'
@@ -21,7 +21,7 @@ export const tablets = [
   {
     id: 'tablet-3',
     name: 'Nature\'s Bounty',
-    price: 42000,
+    price: 11.34,
     image: '/images/natural images/Nature\'s Bounty.jpg',
     category: 'Tablets',
     description: 'Premium multivitamin tablets for daily wellness'
@@ -29,7 +29,7 @@ export const tablets = [
   {
     id: 'tablet-4',
     name: 'MedChoice Turmeric Curcumin',
-    price: 38000,
+    price: 10.26,
     image: '/images/natural images/Med Choice Tumeric Curcumin Description.jpg',
     category: 'Tablets',
     description: 'Anti-inflammatory turmeric curcumin tablets'
@@ -37,7 +37,7 @@ export const tablets = [
   {
     id: 'tablet-5',
     name: 'Purefully Benfotiamine',
-    price: 45000,
+    price: 12.15,
     image: '/images/natural images/Purefully Benfotiamine.jpg',
     category: 'Tablets',
     description: 'Benfotiamine tablets for nerve health support'
@@ -45,7 +45,7 @@ export const tablets = [
   {
     id: 'tablet-6',
     name: 'Turmeric Bioperine Garlic Ginger',
-    price: 48000,
+    price: 12.96,
     image: '/images/natural images/Tumeric Bioperine Garlic Ginger.jpg',
     category: 'Tablets',
     description: 'Comprehensive herbal supplement with multiple benefits'
@@ -53,7 +53,7 @@ export const tablets = [
   {
     id: 'tablet-7',
     name: 'Effective Appetite Suppressant',
-    price: 52000,
+    price: 14.04,
     image: '/images/natural images/Effective Appetite Suppresant.jpg',
     category: 'Tablets',
     description: 'Natural appetite control tablets for weight management'
@@ -61,7 +61,7 @@ export const tablets = [
   {
     id: 'tablet-8',
     name: 'Extra Turmeric Platinum + Black Pepper',
-    price: 55000,
+    price: 14.85,
     image: '/images/natural images/Extra Tumeric Platinum + Black Pepper.jpg',
     category: 'Tablets',
     description: 'Enhanced turmeric formula with black pepper for absorption'
