@@ -5,6 +5,7 @@ import { allProducts, getProductsByCategory } from '../data/allProducts';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Heart, ShoppingCart } from 'lucide-react';
+<<<<<<< HEAD
 // Define Product type here if not exported from allProducts
 type Product = {
   id: string;
@@ -16,6 +17,8 @@ type Product = {
 
 // Define category type
 type Category = 'All' | 'Health Products' | 'Skin Products' | 'Lotions' | 'Tablets' | 'Bedroom Products';
+=======
+>>>>>>> 83bbe1702bc43fcea326a103b9258c1c82c9f3dc
 
 // Available product categories
 const categories: Exclude<Category, 'All'>[] = [
@@ -95,7 +98,12 @@ export default function Products() {
         return 0;
     }
   });
+<<<<<<< HEAD
   const handleAddToCart = (product: Product) => {
+=======
+
+  const handleAddToCart = (product: any) => {
+>>>>>>> 83bbe1702bc43fcea326a103b9258c1c82c9f3dc
     addToCart({ ...product, quantity: 1 });
     setAddedToCart(prev => ({ ...prev, [product.id]: true }));
     
@@ -106,6 +114,10 @@ export default function Products() {
     };
 
   // Move toggleWishlist inside the Products component so it can access setWishlist
+  const toggleWishlist = (productId: string) => {
+    setWishlist(prev => ({ ...prev, [productId]: !prev[productId] }));
+  };
+
   const toggleWishlist = (productId: string) => {
     setWishlist(prev => ({ ...prev, [productId]: !prev[productId] }));
   };
@@ -254,6 +266,23 @@ export default function Products() {
                     <div className="text-sm text-gray-600">
                       UGX {(product.price * 3700 * 12).toLocaleString()} <span className="text-xs text-gray-500">(12 pcs)</span>
                     </div>
+<<<<<<< HEAD
+=======
+                  </div>
+                  
+                  {/* Add to Cart Button */}
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className={`w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-md font-semibold transition-all duration-300 ${
+                      addedToCart[product.id] 
+                        ? 'bg-green-600 text-white' 
+                        : 'bg-[#dd2581] text-white hover:bg-[#f98203]'
+                    }`}
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                    <span>{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
+                  </button>
+>>>>>>> 83bbe1702bc43fcea326a103b9258c1c82c9f3dc
                   </div>
                   
                   {/* Add to Cart Button */}
