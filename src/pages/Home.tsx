@@ -355,39 +355,40 @@ export default function Home() {
           
           <div
             ref={trendingRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 px-12"
+            className="flex gap-4 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 px-12"
             style={{ scrollSnapType: 'x mandatory' }}
           >
             {trendingProducts.map((product, idx) => (
-              <motion.div
+              <div
                 key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="min-w-[280px] bg-white rounded-2xl shadow-lg overflow-hidden snap-center hover:shadow-2xl transition-all duration-300 flex-shrink-0 border border-gray-100"
+                className="min-w-[240px] lg:min-w-[280px] bg-white rounded-xl shadow-lg overflow-hidden snap-center hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100 flex flex-col"
               >
-                {/* Product Image with Wishlist */}
-                <div className="relative p-6 pb-4">
-                  <div className="relative">
-                    <img 
-                      src={product.image} 
-                      alt={product.name} 
-                      className="w-full h-48 object-cover rounded-xl"
-                    />
-                    {/* NEW Badge */}
+                {/* Product Image Container */}
+                <div className="relative p-4 pb-2">
+                  <div className="relative bg-gray-50 rounded-lg overflow-hidden">
+                    <Link to={`/shop-detail/${product.id}`} className="block">
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="w-full h-auto object-contain max-h-40 lg:max-h-48 mx-auto block"
+                        style={{ aspectRatio: 'auto' }}
+                      />
+                    </Link>
+                    
+                    {/* TRENDING Badge */}
                     <div className="absolute top-3 left-3">
-                      <span className="bg-[#f98203] text-white px-3 py-1 rounded-full text-xs font-bold">
+                      <span className="bg-[#f98203] text-white px-2 lg:px-3 py-1 rounded-full text-xs font-bold">
                         TRENDING
                       </span>
                     </div>
+                    
                     {/* Wishlist Heart */}
                     <button
                       onClick={() => toggleWishlist(product.id)}
-                      className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
+                      className="absolute top-3 right-3 p-1.5 lg:p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
                     >
                       <Heart 
-                        className={`w-4 h-4 ${
+                        className={`w-3 h-3 lg:w-4 lg:h-4 ${
                           wishlist[product.id] 
                             ? 'fill-red-500 text-red-500' 
                             : 'text-gray-400'
@@ -398,32 +399,37 @@ export default function Home() {
                 </div>
                 
                 {/* Product Info */}
-                <div className="px-6 pb-6">
-                  <h3 className="text-lg font-bold text-gray-800 mb-3 line-clamp-2 h-14">
-                    {product.name}
-                  </h3>
+                <div className="px-4 pb-4 flex-1 flex flex-col">
+                  <Link to={`/shop-detail/${product.id}`} className="block mb-3">
+                    <h3 className="text-sm lg:text-base font-medium text-gray-800 hover:text-[#dd2581] transition-colors line-clamp-2 leading-tight">
+                      {product.name}
+                    </h3>
+                  </Link>
                   
-                  {/* Pricing */}
-                  <div className="mb-4">
-                    <div className="text-2xl font-bold text-[#dd2581]">
-                      ${product.price.toFixed(2)}
+                  {/* Pricing Section */}
+                  <div className="mb-4 flex-1">
+                    <div className="text-sm lg:text-base font-bold text-gray-800 mb-1">
+                      UGX {ugxPrice3pcs} <span className="text-xs font-normal text-gray-500">(3 pcs)</span>
+                    </div>
+                    <div className="text-xs lg:text-sm text-gray-600">
+                      UGX {ugxPrice12pcs} <span className="text-xs text-gray-500">(12 pcs)</span>
                     </div>
                   </div>
                   
                   {/* Add to Cart Button */}
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className={`w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-xl font-bold transition-all duration-300 ${
+                    className={`w-full flex items-center justify-center space-x-2 py-2 lg:py-2.5 px-4 rounded-lg font-semibold text-xs lg:text-sm transition-all duration-300 ${
                       addedToCart[product.id] 
                         ? 'bg-green-600 text-white' 
-                        : 'bg-[#dd2581] text-white hover:bg-[#f98203] hover:shadow-lg'
+                        : 'bg-[#dd2581] text-white hover:bg-[#f98203] hover:shadow-md'
                     }`}
                   >
-                    <ShoppingCart className="w-5 h-5" />
+                    <ShoppingCart className="w-3 h-3 lg:w-4 lg:h-4" />
                     <span>{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
                   </button>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
           

@@ -41,6 +41,19 @@
   overflow: hidden;
 }
 
+/* Product card responsive adjustments */
+@media (max-width: 640px) {
+  .grid.grid-cols-2 > * {
+    min-height: 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid.grid-cols-4 > * {
+    min-height: 380px;
+  }
+}
+
 /* Responsive banner images with 1351:353 aspect ratio */
 @media (max-width: 768px) {
   [style*="aspectRatio: '1351/353'"] {

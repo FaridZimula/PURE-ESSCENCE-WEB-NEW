@@ -5,18 +5,7 @@ import { allProducts, getProductsByCategory } from '../data/allProducts';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Heart, ShoppingCart } from 'lucide-react';
-<<<<<<< HEAD
-// Define Product type here if not exported from allProducts
-type Product = {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  // Add other fields as needed
-};
-=======
 import { Product } from '../types';
->>>>>>> 1882e313558e188f06e44e2ca53e20b58db1e0dd
 
 // Define category type
 type Category = 'All' | 'Health Products' | 'Skin Products' | 'Lotions' | 'Tablets' | 'Bedroom Products';
@@ -99,10 +88,11 @@ export default function Products() {
         return 0;
     }
   });
-<<<<<<< HEAD
-=======
 
->>>>>>> 1882e313558e188f06e44e2ca53e20b58db1e0dd
+  const toggleWishlist = (productId: string) => {
+    setWishlist(prev => ({ ...prev, [productId]: !prev[productId] }));
+  };
+
   const handleAddToCart = (product: Product) => {
     addToCart({ ...product, quantity: 1 });
     setAddedToCart(prev => ({ ...prev, [product.id]: true }));
@@ -208,71 +198,20 @@ export default function Products() {
           </div>
           
           {/* Products Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {sortedProducts.map((product, index) => (
-              <motion.div
+              <ProductCard
                 key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-              >
-                {/* Product Image with Wishlist */}
-                <div className="relative">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-48 object-cover cursor-pointer"
-                    onClick={() => navigate(`/shop-detail/${product.id}`)}
-                  />
-                  {/* Wishlist Heart */}
-                  <button
-                    onClick={() => toggleWishlist(product.id)}
-                    className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
-                  >
-                    <Heart 
-                      className={`w-4 h-4 ${
-                        wishlist[product.id] 
-                          ? 'fill-red-500 text-red-500' 
-                          : 'text-gray-400'
-                      }`}
-                    />
-                  </button>
-                </div>
-                
-                {/* Product Info */}
-                <div className="p-4">
-                  <h3
-                    className="text-sm font-semibold text-gray-800 mb-2 cursor-pointer hover:text-[#dd2581] transition-colors line-clamp-2"
-                    onClick={() => navigate(`/shop-detail/${product.id}`)}
-                  >
-                    {product.name}
-                  </h3>
-                  
-                  {/* Pricing */}
-                  <div className="mb-3">
-                    <div className="text-lg font-bold text-gray-800">
-                      UGX {(product.price * 3700).toLocaleString()} <span className="text-xs text-gray-500">(3 pcs)</span>
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      UGX {(product.price * 3700 * 12).toLocaleString()} <span className="text-xs text-gray-500">(12 pcs)</span>
-                    </div>
-                  </div>
-                  
-                  {/* Add to Cart Button */}
-                  <button
-                    onClick={() => handleAddToCart(product)}
-                    className={`w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-md font-semibold transition-all duration-300 ${
-                      addedToCart[product.id] 
-                        ? 'bg-green-600 text-white' 
-                        : 'bg-[#dd2581] text-white hover:bg-[#f98203]'
-                    }`}
-                  >
-                    <ShoppingCart className="w-4 h-4" />
-                    <span>{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
-                  </button>
-                </div>
-              </motion.div>
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                image={product.image}
+                category={product.category}
+                onAddToCart={() => handleAddToCart(product)}
+                onToggleWishlist={() => toggleWishlist(product.id)}
+                isInWishlist={wishlist[product.id] || false}
+                isAddedToCart={addedToCart[product.id] || false}
+              />
             ))}
           </div>
 
