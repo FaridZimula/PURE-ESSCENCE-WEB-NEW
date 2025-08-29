@@ -73,7 +73,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-white p-8 rounded-lg shadow-lg order-1 md:order-2"
+            className="bg-white p-6 sm:p-8 rounded-lg shadow-lg order-1 md:order-2"
           >
             <h2 className="text-2xl font-semibold text-[#dd2581] mb-6">Get in Touch</h2>
             <form className="space-y-4">
