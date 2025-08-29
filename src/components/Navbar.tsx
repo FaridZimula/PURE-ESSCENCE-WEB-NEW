@@ -18,7 +18,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<typeof products>([]);
+  const [searchResults, setSearchResults] = useState<typeof allProducts>([]);
   const [showCategoriesDropdown, setShowCategoriesDropdown] = useState(false);
   const location = useLocation();
   const { cartCount } = useCart();
@@ -33,7 +33,7 @@ export default function Navbar() {
       const results = allProducts.filter(product => 
         product.name.toLowerCase().includes(query.toLowerCase()) ||
         product.description.toLowerCase().includes(query.toLowerCase()) ||
-        product.category.toLowerCase().includes(query.toLowerCase())
+        product.category && product.category.toLowerCase().includes(query.toLowerCase())
       );
       setSearchResults(results);
     } else {

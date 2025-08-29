@@ -16,7 +16,7 @@ export default function LoginForm() {
       const urlParams = new URLSearchParams(window.location.search);
       const redirectUrl = urlParams.get('redirect') || '/';
       window.location.href = redirectUrl;
-    } catch (err) {
+    } catch {
       setError('Failed to login. Please check your credentials.');
     }
   };
