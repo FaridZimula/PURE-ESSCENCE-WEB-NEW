@@ -5,18 +5,7 @@ import { allProducts, getProductsByCategory } from '../data/allProducts';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Heart, ShoppingCart } from 'lucide-react';
-<<<<<<< HEAD
-// Define Product type here if not exported from allProducts
-type Product = {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  // Add other fields as needed
-};
-=======
 import { Product } from '../types';
->>>>>>> 1882e313558e188f06e44e2ca53e20b58db1e0dd
 
 // Define category type
 type Category = 'All' | 'Health Products' | 'Skin Products' | 'Lotions' | 'Tablets' | 'Bedroom Products';
@@ -99,10 +88,7 @@ export default function Products() {
         return 0;
     }
   });
-<<<<<<< HEAD
-=======
 
->>>>>>> 1882e313558e188f06e44e2ca53e20b58db1e0dd
   const handleAddToCart = (product: Product) => {
     addToCart({ ...product, quantity: 1 });
     setAddedToCart(prev => ({ ...prev, [product.id]: true }));
