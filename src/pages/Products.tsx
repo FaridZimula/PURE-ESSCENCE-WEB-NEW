@@ -89,6 +89,10 @@ export default function Products() {
     }
   });
 
+  const toggleWishlist = (productId: string) => {
+    setWishlist(prev => ({ ...prev, [productId]: !prev[productId] }));
+  };
+
   const handleAddToCart = (product: Product) => {
     addToCart({ ...product, quantity: 1 });
     setAddedToCart(prev => ({ ...prev, [product.id]: true }));
