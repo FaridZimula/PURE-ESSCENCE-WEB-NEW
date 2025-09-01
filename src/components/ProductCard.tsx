@@ -69,11 +69,8 @@ export default function ProductCard({
         
         {/* Pricing Section */}
         <div className="mb-4 flex-1 text-center">
-          <div className="text-base font-bold text-gray-800 mb-1 text-center">
-            UGX {ugxPrice3pcs} <span className="text-xs font-normal text-gray-500">(3 pcs)</span>
-          </div>
-          <div className="text-sm text-gray-600 text-center">
-            UGX {ugxPrice12pcs} <span className="text-xs text-gray-500">(12 pcs)</span>
+          <div className="text-lg font-bold text-[#dd2581] text-center">
+            ${price.toFixed(2)}
           </div>
         </div>
         

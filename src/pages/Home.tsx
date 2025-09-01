@@ -409,20 +409,9 @@ export default function Home() {
                   
                   {/* Pricing Section */}
                   <div className="mb-4 flex-1">
-                    {(() => {
-                      const ugxPrice3pcs = (product.price * 3700).toLocaleString();
-                      const ugxPrice12pcs = (product.price * 3700 * 12).toLocaleString();
-                      return (
-                        <>
-                    <div className="text-sm lg:text-base font-bold text-gray-800 mb-1">
-                      UGX {ugxPrice3pcs} <span className="text-xs font-normal text-gray-500">(3 pcs)</span>
+                    <div className="text-sm lg:text-base font-bold text-[#dd2581] text-center">
+                      ${product.price.toFixed(2)}
                     </div>
-                    <div className="text-xs lg:text-sm text-gray-600">
-                      UGX {ugxPrice12pcs} <span className="text-xs text-gray-500">(12 pcs)</span>
-                    </div>
-                        </>
-                      );
-                    })()}
                   </div>
                   
                   {/* Add to Cart Button */}
