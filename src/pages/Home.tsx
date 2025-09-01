@@ -42,7 +42,7 @@ const trendingProducts = [
   allProducts.find(p => p.category === 'Skin Products' && p.name.includes('PCA')),
   allProducts.find(p => p.category === 'Health Products' && p.name.includes('Naka')),
   allProducts.find(p => p.category === 'Lotions' && p.name.includes('Dr Teals'))
-].filter(Boolean).slice(0, 8);
+].filter(Boolean).slice(0, 8) as any[];
 
 const categoryProducts = [
   {
@@ -359,6 +359,7 @@ export default function Home() {
             style={{ scrollSnapType: 'x mandatory' }}
           >
             {trendingProducts.map((product, idx) => (
+              product && (
               <div
                 key={product.id}
                 className="min-w-[240px] lg:min-w-[280px] bg-white rounded-xl shadow-lg overflow-hidden snap-center hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100 flex flex-col"
@@ -408,11 +409,8 @@ export default function Home() {
                   
                   {/* Pricing Section */}
                   <div className="mb-4 flex-1">
-                    <div className="text-sm lg:text-base font-bold text-gray-800 mb-1">
-                      UGX {ugxPrice3pcs} <span className="text-xs font-normal text-gray-500">(3 pcs)</span>
-                    </div>
-                    <div className="text-xs lg:text-sm text-gray-600">
-                      UGX {ugxPrice12pcs} <span className="text-xs text-gray-500">(12 pcs)</span>
+                    <div className="text-sm lg:text-base font-bold text-[#dd2581] text-center">
+                      ${product.price.toFixed(2)}
                     </div>
                   </div>
                   
@@ -430,6 +428,7 @@ export default function Home() {
                   </button>
                 </div>
               </div>
+              )
             ))}
           </div>
           

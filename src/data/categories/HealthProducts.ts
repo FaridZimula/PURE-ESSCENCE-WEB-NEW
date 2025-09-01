@@ -70,7 +70,8 @@ export const healthProducts = [
     id: 'health-9',
     name: 'Server Cracked Heel Repair',
     price: 6.03,
-    image: 'public/images/natural images/Server Cracked Heel Repair.jpg',
+    image: '/images/natural images/Server Cracked Heel Repair.jpg',
+    category: 'Health Products',
     description: 'High-quality marine collagen for beauty and wellness'
   },
   {
