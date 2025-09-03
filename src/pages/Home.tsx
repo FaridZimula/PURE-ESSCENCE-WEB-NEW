@@ -246,203 +246,194 @@ export default function Home() {
 
       {/* Shop By Category Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <div className="relative inline-block">
-            <h2 className="text-4xl font-bold text-gray-800 mb-2">Shop by Category</h2>
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#dd2581] rounded-full"></div>
-          </div>
-          <div className="flex justify-end mt-8">
+        {/* Container with white background and rounded corners */}
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800">Shop by Category</h2>
+              <div className="w-20 h-1 bg-[#dd2581] rounded-full mt-1"></div>
+            </div>
             <Link 
               to="/products" 
-              className="bg-[#dd2581] text-white px-8 py-3 rounded-full font-bold hover:bg-[#f98203] transition-colors shadow-lg"
+              className="border border-[#dd2581] text-[#dd2581] px-6 py-2 rounded-full font-semibold hover:bg-[#dd2581] hover:text-white transition-colors"
             >
               View More
             </Link>
           </div>
-        </div>
-        
-        <div className="relative">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
-            onClick={() => scrollCarousel(categoryRef, -1)}
-            aria-label="Scroll left"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
-            </svg>
-          </motion.button>
           
-          <div
-            ref={categoryRef}
-            className="flex gap-4 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 px-8 lg:px-12"
-            style={{ scrollSnapType: 'x mandatory' }}
-          >
-            {categoryProducts.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="min-w-[180px] lg:min-w-[200px] bg-white rounded-2xl shadow-lg overflow-hidden snap-center hover:shadow-2xl transition-all duration-300 flex-shrink-0 border border-gray-100"
-              >
-                <div className="relative h-32 lg:h-36 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.category}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                </div>
-                <div className="p-3 lg:p-4 text-center">
-                  <h3 className="text-sm lg:text-base font-bold text-gray-800 mb-2">{item.category}</h3>
-                  <Link 
-                    to="/products"
-                    className="inline-block bg-[#f98203] text-white px-3 lg:px-4 py-1.5 rounded-full font-semibold hover:bg-[#dd2581] transition-colors text-xs lg:text-sm"
-                  >
-                    Shop Now
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+          {/* Scrollable Category Cards */}
+          <div className="relative">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-gray-100 rounded-full p-3 hover:bg-gray-200 transition-colors"
+              onClick={() => scrollCarousel(categoryRef, -1)}
+              aria-label="Scroll left"
+            >
+              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+            
+            <div
+              ref={categoryRef}
+              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-8"
+              style={{ scrollSnapType: 'x mandatory' }}
+            >
+              {categoryProducts.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="min-w-[160px] bg-white border border-gray-200 rounded-2xl overflow-hidden snap-center hover:shadow-md transition-all duration-300 flex-shrink-0"
+                >
+                  <div className="relative h-28 overflow-hidden bg-gray-50">
+                    <img
+                      src={item.image}
+                      alt={item.category}
+                      className="w-full h-full object-contain p-2"
+                    />
+                  </div>
+                  <div className="p-3 text-center">
+                    <h3 className="text-sm font-bold text-[#dd2581]">{item.category}</h3>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-gray-100 rounded-full p-3 hover:bg-gray-200 transition-colors"
+              onClick={() => scrollCarousel(categoryRef, 1)}
+              aria-label="Scroll right"
+            >
+              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
           </div>
-          
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
-            onClick={() => scrollCarousel(categoryRef, 1)}
-            aria-label="Scroll right"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
         </div>
       </section>
 
       {/* Trending Items Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="flex items-center justify-between mb-12">
-          <div className="flex-1 text-center">
-            <div className="relative inline-block">
-              <h2 className="text-4xl font-bold text-gray-800 mb-2">Trending Items</h2>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-[#dd2581] rounded-full"></div>
+        {/* Container with white background and rounded corners */}
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800">Trending Items</h2>
+              <div className="w-20 h-1 bg-[#dd2581] rounded-full mt-1"></div>
             </div>
+            <Link 
+              to="/products" 
+              className="border border-[#dd2581] text-[#dd2581] px-6 py-2 rounded-full font-semibold hover:bg-[#dd2581] hover:text-white transition-colors"
+            >
+              View More
+            </Link>
           </div>
-          <Link 
-            to="/products" 
-            className="border-2 border-[#dd2581] text-[#dd2581] px-8 py-3 rounded-full font-bold hover:bg-[#dd2581] hover:text-white transition-all duration-300 shadow-md"
-          >
-            View More
-          </Link>
-        </div>
-        
-        <div className="relative">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
-            onClick={() => scrollCarousel(trendingRef, -1)}
-            aria-label="Scroll left"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
-            </svg>
-          </motion.button>
           
-          <div
-            ref={trendingRef}
-            className="flex gap-3 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 px-8 lg:px-12"
-            style={{ scrollSnapType: 'x mandatory' }}
-          >
-            {trendingProducts.map((product, idx) => (
-              product && (
-              <div
-                key={product.id}
-                className="min-w-[160px] lg:min-w-[200px] bg-white rounded-xl shadow-lg overflow-hidden snap-center hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100 flex flex-col"
+          {/* Scrollable Trending Cards */}
+          <div className="relative">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-gray-100 rounded-full p-3 hover:bg-gray-200 transition-colors"
+              onClick={() => scrollCarousel(trendingRef, -1)}
+              aria-label="Scroll left"
+            >
+              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+            
+            <div
+              ref={trendingRef}
+              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-8"
+              style={{ scrollSnapType: 'x mandatory' }}
+            >
+              {trendingProducts.map((product, idx) => (
+                product && (
+                <div
+                  key={product.id}
+                  className="min-w-[160px] bg-white border border-gray-200 rounded-2xl overflow-hidden snap-center hover:shadow-md transition-all duration-300 flex-shrink-0 flex flex-col"
+                >
+                  {/* Product Image Container */}
+                  <div className="relative p-3 pb-2">
+                    <div className="relative bg-gray-50 rounded-lg overflow-hidden h-24">
+                      <Link to={`/shop-detail/${product.id}`} className="block">
+                        <img 
+                          src={product.image} 
+                          alt={product.name} 
+                          className="w-full h-full object-contain p-1"
+                        />
+                      </Link>
+                      
+                      {/* Wishlist Heart */}
+                      <button
+                        onClick={() => toggleWishlist(product.id)}
+                        className="absolute top-1 right-1 p-1 bg-white rounded-full shadow-sm hover:bg-gray-50 transition-colors"
               >
-                {/* Product Image Container */}
-                <div className="relative p-3 lg:p-4 pb-2">
-                  <div className="relative bg-gray-50 rounded-lg overflow-hidden">
-                    <Link to={`/shop-detail/${product.id}`} className="block">
-                      <img 
-                        src={product.image} 
-                        alt={product.name} 
-                        className="w-full h-auto object-contain max-h-24 lg:max-h-32 mx-auto block"
-                        style={{ aspectRatio: 'auto' }}
-                      />
+                        <Heart 
+                          className={`w-3 h-3 ${
+                            wishlist[product.id] 
+                              ? 'fill-red-500 text-red-500' 
+                              : 'text-gray-400'
+                          }`}
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Product Info */}
+                  <div className="px-3 pb-3 flex-1 flex flex-col">
+                    <Link to={`/shop-detail/${product.id}`} className="block mb-2">
+                      <h3 className="text-xs font-medium text-[#dd2581] line-clamp-2 leading-tight text-center">
+                        {product.name}
+                      </h3>
                     </Link>
                     
-                    {/* TRENDING Badge */}
-                    <div className="absolute top-2 left-2 lg:top-3 lg:left-3">
-                      <span className="bg-[#f98203] text-white px-1.5 lg:px-3 py-0.5 lg:py-1 rounded-full text-xs font-bold">
-                        TRENDING
-                      </span>
+                    {/* Pricing Section */}
+                    <div className="mb-3 flex-1">
+                      <div className="text-sm font-bold text-gray-800 text-center">
+                        ${product.price.toFixed(2)}
+                      </div>
                     </div>
                     
-                    {/* Wishlist Heart */}
+                    {/* Add to Cart Button */}
                     <button
-                      onClick={() => toggleWishlist(product.id)}
-                      className="absolute top-2 right-2 lg:top-3 lg:right-3 p-1 lg:p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
+                      onClick={() => handleAddToCart(product)}
+                      className={`w-full flex items-center justify-center space-x-1 py-1.5 px-2 rounded-lg font-semibold text-xs transition-all duration-300 ${
+                        addedToCart[product.id] 
+                          ? 'bg-green-600 text-white' 
+                          : 'bg-[#dd2581] text-white hover:bg-[#f98203] hover:shadow-md'
+                      }`}
                     >
-                      <Heart 
-                        className={`w-2.5 h-2.5 lg:w-4 lg:h-4 ${
-                          wishlist[product.id] 
-                            ? 'fill-red-500 text-red-500' 
-                            : 'text-gray-400'
-                        }`}
-                      />
+                      <ShoppingCart className="w-3 h-3 flex-shrink-0" />
+                      <span className="whitespace-nowrap">{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
                     </button>
                   </div>
-                </div>
-                
-                {/* Product Info */}
-                <div className="px-2 lg:px-3 pb-2 lg:pb-3 flex-1 flex flex-col">
-                  <Link to={`/shop-detail/${product.id}`} className="block mb-3">
-                    <h3 className="text-xs lg:text-sm font-medium text-gray-800 hover:text-[#dd2581] transition-colors line-clamp-2 leading-tight">
-                      {product.name}
-                    </h3>
-                  </Link>
-                  
-                  {/* Pricing Section */}
-                  <div className="mb-4 flex-1">
-                    <div className="text-xs lg:text-sm font-bold text-[#dd2581] text-center">
-                      ${product.price.toFixed(2)}
-                    </div>
                   </div>
-                  
-                  {/* Add to Cart Button */}
-                  <button
-                    onClick={() => handleAddToCart(product)}
-                    className={`w-full flex items-center justify-center space-x-1 py-1.5 lg:py-2 px-1 lg:px-2 rounded-lg font-semibold text-xs transition-all duration-300 ${
-                      addedToCart[product.id] 
-                        ? 'bg-green-600 text-white' 
-                        : 'bg-[#dd2581] text-white hover:bg-[#f98203] hover:shadow-md'
-                    }`}
-                  >
-                    <ShoppingCart className="w-2.5 h-2.5 lg:w-3 lg:h-3 flex-shrink-0" />
-                    <span className="whitespace-nowrap text-xs">{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
-                  </button>
                 </div>
-              </div>
-              )
-            ))}
+                )
+              ))}
+            </div>
+            
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-gray-100 rounded-full p-3 hover:bg-gray-200 transition-colors"
+              onClick={() => scrollCarousel(trendingRef, 1)}
+              aria-label="Scroll right"
+            >
+              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
           </div>
-          
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
-            onClick={() => scrollCarousel(trendingRef, 1)}
-            aria-label="Scroll right"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
         </div>
       </section>
 
