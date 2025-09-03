@@ -286,9 +286,9 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="min-w-[220px] lg:min-w-[260px] bg-white rounded-2xl shadow-lg overflow-hidden snap-center hover:shadow-2xl transition-all duration-300 flex-shrink-0 border border-gray-100"
+                className="min-w-[180px] lg:min-w-[200px] bg-white rounded-2xl shadow-lg overflow-hidden snap-center hover:shadow-2xl transition-all duration-300 flex-shrink-0 border border-gray-100"
               >
-                <div className="relative h-36 lg:h-44 overflow-hidden">
+                <div className="relative h-32 lg:h-36 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.category}
@@ -296,11 +296,11 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-                <div className="p-4 lg:p-6 text-center">
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-800 mb-3">{item.category}</h3>
+                <div className="p-3 lg:p-4 text-center">
+                  <h3 className="text-sm lg:text-base font-bold text-gray-800 mb-2">{item.category}</h3>
                   <Link 
                     to="/products"
-                    className="inline-block bg-[#f98203] text-white px-4 lg:px-6 py-2 rounded-full font-semibold hover:bg-[#dd2581] transition-colors text-sm lg:text-base"
+                    className="inline-block bg-[#f98203] text-white px-3 lg:px-4 py-1.5 rounded-full font-semibold hover:bg-[#dd2581] transition-colors text-xs lg:text-sm"
                   >
                     Shop Now
                   </Link>
@@ -362,7 +362,7 @@ export default function Home() {
               product && (
               <div
                 key={product.id}
-                className="min-w-[180px] lg:min-w-[260px] bg-white rounded-xl shadow-lg overflow-hidden snap-center hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100 flex flex-col"
+                className="min-w-[160px] lg:min-w-[200px] bg-white rounded-xl shadow-lg overflow-hidden snap-center hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100 flex flex-col"
               >
                 {/* Product Image Container */}
                 <div className="relative p-3 lg:p-4 pb-2">
@@ -371,7 +371,7 @@ export default function Home() {
                       <img 
                         src={product.image} 
                         alt={product.name} 
-                        className="w-full h-auto object-contain max-h-32 lg:max-h-44 mx-auto block"
+                        className="w-full h-auto object-contain max-h-24 lg:max-h-32 mx-auto block"
                         style={{ aspectRatio: 'auto' }}
                       />
                     </Link>
@@ -400,16 +400,16 @@ export default function Home() {
                 </div>
                 
                 {/* Product Info */}
-                <div className="px-3 lg:px-4 pb-3 lg:pb-4 flex-1 flex flex-col">
+                <div className="px-2 lg:px-3 pb-2 lg:pb-3 flex-1 flex flex-col">
                   <Link to={`/shop-detail/${product.id}`} className="block mb-3">
-                    <h3 className="text-xs lg:text-base font-medium text-gray-800 hover:text-[#dd2581] transition-colors line-clamp-2 leading-tight">
+                    <h3 className="text-xs lg:text-sm font-medium text-gray-800 hover:text-[#dd2581] transition-colors line-clamp-2 leading-tight">
                       {product.name}
                     </h3>
                   </Link>
                   
                   {/* Pricing Section */}
                   <div className="mb-4 flex-1">
-                    <div className="text-xs lg:text-base font-bold text-[#dd2581] text-center">
+                    <div className="text-xs lg:text-sm font-bold text-[#dd2581] text-center">
                       ${product.price.toFixed(2)}
                     </div>
                   </div>
@@ -417,14 +417,14 @@ export default function Home() {
                   {/* Add to Cart Button */}
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className={`w-full flex items-center justify-center space-x-1 py-2 lg:py-2.5 px-2 lg:px-4 rounded-lg font-semibold text-xs lg:text-sm transition-all duration-300 ${
+                    className={`w-full flex items-center justify-center space-x-1 py-1.5 lg:py-2 px-1 lg:px-2 rounded-lg font-semibold text-xs transition-all duration-300 ${
                       addedToCart[product.id] 
                         ? 'bg-green-600 text-white' 
                         : 'bg-[#dd2581] text-white hover:bg-[#f98203] hover:shadow-md'
                     }`}
                   >
-                    <ShoppingCart className="w-2.5 h-2.5 lg:w-4 lg:h-4 flex-shrink-0" />
-                    <span className="whitespace-nowrap">{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
+                    <ShoppingCart className="w-2.5 h-2.5 lg:w-3 lg:h-3 flex-shrink-0" />
+                    <span className="whitespace-nowrap text-xs">{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
                   </button>
                 </div>
               </div>
