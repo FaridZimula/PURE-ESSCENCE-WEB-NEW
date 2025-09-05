@@ -256,39 +256,40 @@ export default function Home() {
 
       {/* Shop By Category Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        {/* Container with white background and rounded corners */}
-        <div className="bg-white rounded-2xl shadow-lg p-6">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-800">Shop by Category</h2>
-              <div className="w-20 h-1 bg-[#dd2581] rounded-full mt-1"></div>
-            </div>
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex-1 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Shop by Category</h2>
+            <div className="w-32 h-1 bg-[#dd2581] rounded-full mx-auto"></div>
+          </div>
+          <div className="hidden md:block">
             <Link 
               to="/products" 
-              className="border border-[#dd2581] text-[#dd2581] px-6 py-2 rounded-full font-semibold hover:bg-[#dd2581] hover:text-white transition-colors"
+              className="border-2 border-[#dd2581] text-[#dd2581] px-8 py-3 rounded-full font-bold hover:bg-[#dd2581] hover:text-white transition-all duration-300 shadow-md"
             >
               View More
             </Link>
           </div>
-          
-          {/* Scrollable Category Cards */}
-          <div className="relative">
+        </div>
+        
+        {/* Desktop View - Horizontal Scrollable */}
+        <div className="hidden md:block">
+          <div className="relative bg-white rounded-2xl shadow-lg p-6">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-gray-100 rounded-full p-3 hover:bg-gray-200 transition-colors"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
               onClick={() => scrollCarousel(categoryRef, -1)}
               aria-label="Scroll left"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
               </svg>
             </motion.button>
             
             <div
               ref={categoryRef}
-              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-8"
+              className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-12"
               style={{ scrollSnapType: 'x mandatory' }}
             >
               {categoryProducts.map((item, idx) => (
@@ -297,17 +298,17 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="min-w-[160px] bg-white border border-gray-200 rounded-2xl overflow-hidden snap-center hover:shadow-md transition-all duration-300 flex-shrink-0"
+                  className="min-w-[200px] bg-white border border-gray-200 rounded-2xl overflow-hidden snap-center hover:shadow-xl transition-all duration-300 flex-shrink-0"
                 >
-                  <div className="relative h-28 overflow-hidden bg-gray-50">
+                  <div className="relative h-40 overflow-hidden bg-gray-50">
                     <img
                       src={item.image}
                       alt={item.category}
-                      className="w-full h-full object-contain p-2"
+                      className="w-full h-full object-contain p-4"
                     />
                   </div>
-                  <div className="p-3 text-center">
-                    <h3 className="text-sm font-bold text-[#dd2581]">{item.category}</h3>
+                  <div className="p-4 text-center">
+                    <h3 className="text-base font-bold text-gray-800">{item.category}</h3>
                   </div>
                 </motion.div>
               ))}
@@ -316,14 +317,88 @@ export default function Home() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-gray-100 rounded-full p-3 hover:bg-gray-200 transition-colors"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white shadow-xl rounded-full p-4 hover:bg-[#dd2581] hover:text-white transition-all duration-300 border-2 border-gray-100"
               onClick={() => scrollCarousel(categoryRef, 1)}
               aria-label="Scroll right"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
+          </div>
+        </div>
+        
+        {/* Mobile View - 2x2 Grid with Navigation */}
+        <div className="md:hidden">
+          <div className="bg-white rounded-2xl shadow-lg p-4 relative">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-3 hover:bg-[#dd2581] hover:text-white transition-all duration-300"
+              onClick={() => scrollCarousel(categoryRef, -1)}
+              aria-label="Scroll left"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+            
+            <div
+              ref={categoryRef}
+              className="overflow-x-auto scroll-smooth snap-x snap-mandatory px-8"
+              style={{ scrollSnapType: 'x mandatory' }}
+            >
+              <div className="flex gap-4 pb-4">
+                {Array.from({ length: Math.ceil(categoryProducts.length / 4) }, (_, pageIndex) => (
+                  <div key={pageIndex} className="min-w-full snap-center">
+                    <div className="grid grid-cols-2 gap-4">
+                      {categoryProducts.slice(pageIndex * 4, (pageIndex + 1) * 4).map((item, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-all duration-300"
+                        >
+                          <div className="relative h-32 overflow-hidden bg-gray-50">
+                            <img
+                              src={item.image}
+                              alt={item.category}
+                              className="w-full h-full object-contain p-3"
+                            />
+                          </div>
+                          <div className="p-3 text-center">
+                            <h3 className="text-sm font-bold text-gray-800 leading-tight">{item.category}</h3>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-3 hover:bg-[#dd2581] hover:text-white transition-all duration-300"
+              onClick={() => scrollCarousel(categoryRef, 1)}
+              aria-label="Scroll right"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </motion.button>
+          </div>
+          
+          {/* Mobile View More Button */}
+          <div className="text-center mt-6">
+            <Link 
+              to="/products" 
+              className="border-2 border-[#dd2581] text-[#dd2581] px-6 py-2 rounded-full font-bold hover:bg-[#dd2581] hover:text-white transition-all duration-300 shadow-md"
+            >
+              View More
+            </Link>
           </div>
         </div>
       </section>
