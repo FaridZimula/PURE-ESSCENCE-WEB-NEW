@@ -49,7 +49,7 @@ ${orderDetails}
 Please confirm this order. Thank you!
     `;
 
-    const whatsappUrl = `https://wa.me/256754507334?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/12046984791?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
