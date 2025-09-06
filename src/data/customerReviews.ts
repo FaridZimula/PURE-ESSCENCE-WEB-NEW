@@ -4,25 +4,25 @@
 export const customerReviews = [
   {
     id: 1,
-    name: 'Sarah K.',
-    profession: 'Entrepreneur',
-    image: '/images/testimonials/client1.jpg',
+    name: 'Zimula Farid',
+    profession: 'Techpreneur',
+    image: '/images/My image.png',
     rating: 5,
     comment: 'Absolutely love these products! My skin has never felt better.'
   },
   {
     id: 2,
-    name: 'James O.',
-    profession: 'Teacher',
-    image: '/images/testimonials/client2.jpg',
+    name: 'Bangole Alvin',
+    profession: 'Software Engineer',
+    image: '/images/Alvin image.png',
     rating: 4,
     comment: 'High quality and natural. I recommend to all my friends.'
   },
   {
     id: 3,
-    name: 'Aisha N.',
-    profession: 'Model',
-    image: '/images/testimonials/client3.jpg',
+    name: 'Farahan Vicent',
+    profession: 'Entrepreneur',
+    image: '/images/lapter-BaH3qKJV.jpg',
     rating: 5,
     comment: 'The best skincare I have ever used! Will buy again.'
   },
@@ -30,15 +30,15 @@ export const customerReviews = [
     id: 4,
     name: 'Michael R.',
     profession: 'Doctor',
-    image: '/images/testimonials/client4.jpg',
+    image: '/images/White man.jpeg',
     rating: 5,
     comment: 'As a medical professional, I appreciate the natural ingredients and effectiveness.'
   },
   {
     id: 5,
     name: 'Grace M.',
-    profession: 'Student',
-    image: '/images/testimonials/client5.jpg',
+    profession: 'Entrepreneur',
+    image: '/images/White woman.jpeg',
     rating: 4,
     comment: 'Great value for money and amazing results on my acne-prone skin.'
   }

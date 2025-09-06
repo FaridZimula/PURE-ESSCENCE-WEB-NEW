@@ -8,19 +8,19 @@ import { customerReviews } from '../data/customerReviews';
 
 const slides = [
   {
-    image: "/images/Home Sliders/WEB BANNER PURE ESSENCE 1_page-0001.jpg"
+    image: "/images/Home Sliders/WEB BANNER 10_page-0001.jpg"
   },
   {
-    image: "/images/Home Sliders/WEB BANNER PURE ESSENCE TWO_page-0001.jpg"
+    image: "/images/Home Sliders/SKIN PRODUCTS WEB PAGE.jpg"
   },
   {
-    image: "/images/Home Sliders/WEB BANNER PURE ESSENCE THREE_page-0001.jpg"
+    image: "/images/Home Sliders/NATURAL INGREDIENTS WEB BANNER.jpg"
   },
   {
-    image: "/images/Home Sliders/WEB BANNER PURE ESSENCE FOUR_page-0001.jpg"
+    image: "/images/Home Sliders/CHAT WITH US ON WHATSAPP BANNER.jpg"
   },
   {
-    image: "/images/Home Sliders/WEB BANNER PURE ESSENCE FIVE_page-0001.jpg"
+    image: "/images/Home Sliders/BEDROOM PRODUCTS WEB BANNER.jpg"
   }
 ];
 
@@ -142,7 +142,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 4000);
 
     return () => {
       clearInterval(timer);
@@ -181,7 +181,7 @@ export default function Home() {
     <div className="pt-0">
       {/* Hero Slider - Clean images sliding left */}
       <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1351/353' }}>
-        <div className="flex transition-transform duration-1000 ease-in-out h-full"
+        <div className="flex transition-transform duration-3000 ease-in-out h-full"
              style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
           {slides.map((slide, index) => (
             <div key={index} className="min-w-full h-full">
@@ -195,18 +195,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Slide indicators */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                currentSlide === index ? 'bg-[#f98203]' : 'bg-white/50'
-              }`}
-              onClick={() => setCurrentSlide(index)}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Two rectangular promotional images - Clean without text */}
@@ -234,12 +222,12 @@ export default function Home() {
 
       {/* Shop By Category Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        {/* Header - Horizontal Layout */}
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-800">Shop by Category</h2>
+        {/* Header - Centered Layout */}
+        <div className="flex justify-center items-center gap-6 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Shop by Category</h2>
           <Link 
             to="/products" 
-            className="border border-[#dd2581] text-[#dd2581] px-4 py-1 rounded-full text-sm font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
+            className="border border-[#dd2581] text-[#dd2581] px-3 py-1 rounded-full text-xs font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
           >
             View More
           </Link>
@@ -302,12 +290,12 @@ export default function Home() {
 
       {/* Trending Items Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        {/* Header - Horizontal Layout */}
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-800">Trending Items</h2>
+        {/* Header - Centered Layout */}
+        <div className="flex justify-center items-center gap-6 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Trending Items</h2>
           <Link 
             to="/products" 
-            className="border border-[#dd2581] text-[#dd2581] px-4 py-1 rounded-full text-sm font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
+            className="border border-[#dd2581] text-[#dd2581] px-3 py-1 rounded-full text-xs font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
           >
             View More
           </Link>
