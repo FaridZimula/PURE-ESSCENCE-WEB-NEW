@@ -234,12 +234,12 @@ export default function Home() {
 
       {/* Shop By Category Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        {/* Header - Horizontal Layout */}
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-800">Shop by Category</h2>
+        {/* Header - Centered Layout */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 text-center">Shop by Category</h2>
           <Link 
             to="/products" 
-            className="border border-[#dd2581] text-[#dd2581] px-4 py-1 rounded-full text-sm font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
+            className="border border-[#dd2581] text-[#dd2581] px-3 py-1 rounded-full text-xs font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
           >
             View More
           </Link>
@@ -302,12 +302,12 @@ export default function Home() {
 
       {/* Trending Items Section */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        {/* Header - Horizontal Layout */}
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-800">Trending Items</h2>
+        {/* Header - Centered Layout */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 text-center">Trending Items</h2>
           <Link 
             to="/products" 
-            className="border border-[#dd2581] text-[#dd2581] px-4 py-1 rounded-full text-sm font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
+            className="border border-[#dd2581] text-[#dd2581] px-3 py-1 rounded-full text-xs font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
           >
             View More
           </Link>
