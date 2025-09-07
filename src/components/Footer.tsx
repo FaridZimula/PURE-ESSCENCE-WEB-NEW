@@ -55,9 +55,9 @@ export default function Footer() {
         <div>
           <h3 className="text-2xl font-bold mb-4">Contact</h3>
           <ul className="space-y-2 text-white/80">
-            <li>Address: 123 Beauty Street, Skincare City</li>
+            <li>Address: 1850 Kings Road, Victoria BC, Canada</li>
             <li>Email: contact@puressence.com</li>
-            <li>Phone: +256 776 203 930</li>
+            <li>Phone: +1 (204) 698-4791</li>
           </ul>
           
           {/* Social Media Links */}
