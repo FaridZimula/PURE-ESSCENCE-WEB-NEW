@@ -142,7 +142,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 5000);
 
     return () => {
       clearInterval(timer);
@@ -181,7 +181,7 @@ export default function Home() {
     <div className="pt-0">
       {/* Hero Slider - Clean images sliding left */}
       <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1351/353' }}>
-        <div className="flex transition-transform duration-3000 ease-in-out h-full"
+        <div className="flex transition-transform duration-1000 ease-in-out h-full"
              style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
           {slides.map((slide, index) => (
             <div key={index} className="min-w-full h-full">

@@ -61,7 +61,7 @@ export default function Products() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentPromoSlide((prev) => (prev + 1) % currentSlides.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(timer);
   }, [currentSlides.length]);
 
