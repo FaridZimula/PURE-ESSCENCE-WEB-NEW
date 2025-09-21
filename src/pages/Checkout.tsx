@@ -133,7 +133,8 @@ Please confirm this order. Thank you!
               <span className="text-green-800 font-semibold">Fast Delivery</span>
             </div>
             <p className="text-green-700 text-sm mt-1">
-              Your order will be delivered within 24 hours from confirmation.
+              Your order will be delivered within 5 days from confirmation.
+              We deliver in all areas in Uganda, South Sudan, DRC Congo, Kenya, Tanzania, Rwanda, Burundi and Zambia.
             </p>
           </div>
         </motion.div>
