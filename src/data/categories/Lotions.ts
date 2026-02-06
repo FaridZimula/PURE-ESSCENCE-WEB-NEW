@@ -1,7 +1,11 @@
+import { Product } from '../../types';
+import { generatePlaceholders } from '../productUtils';
+
 // Easy-to-edit Lotions data structure
 // To modify products: simply edit the id, name, price, image, category, and description fields below
 
-export const lotions = [
+export const lotions: Product[] = [
+  ...generatePlaceholders('Lotions', 1000, 500),
   {
     id: 'lotion-1',
     name: 'Vaseline Gluta-Hya Dewy Radiance',

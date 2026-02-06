@@ -1,7 +1,11 @@
 // Easy-to-edit Skin Products data structure
 // To modify products: simply edit the id, name, price, image, category, and description fields below
 
-export const skinProducts = [
+import { Product } from '../../types';
+import { generatePlaceholders } from '../productUtils';
+
+export const skinProducts: Product[] = [
+  ...generatePlaceholders('Skin Products', 1000, 500),
   {
     id: 'skin-1',
     name: 'Lanorient Rose Multi-Use Oil',

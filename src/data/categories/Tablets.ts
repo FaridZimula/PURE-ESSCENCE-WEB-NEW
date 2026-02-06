@@ -1,7 +1,11 @@
+import { Product } from '../../types';
+import { generatePlaceholders } from '../productUtils';
+
 // Easy-to-edit Tablets data structure
 // To modify products: simply edit the id, name, price, image, category, and description fields below
 
-export const tablets = [
+export const tablets: Product[] = [
+  ...generatePlaceholders('Tablets', 1000, 500),
   {
     id: 'tablet-1',
     name: 'Vitamin C Tablets',

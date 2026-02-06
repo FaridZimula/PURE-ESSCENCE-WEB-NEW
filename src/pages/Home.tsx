@@ -57,34 +57,49 @@ const trendingProducts: Product[] = [
 
 const categoryProducts = [
   {
-    category: 'Skin Products',
-    image: '/images/natural/23.jpg',
-    product: allProducts.find(p => p.category === 'Skin Products') || { name: "Coming Soon", price: 0 }
+    category: 'Supplements',
+    image: '/images/natural/15.jpg',
+    product: allProducts.find(p => p.category === 'Health Products' || p.category === 'Tablets') || { name: "Coming Soon", price: 0 }
   },
   {
-    category: 'Lotions',
+    category: 'Sports',
+    image: '/images/natural/16.jpg',
+    product: { name: "Coming Soon", price: 0 }
+  },
+  {
+    category: 'Bath',
     image: '/images/natural/24.jpg',
     product: allProducts.find(p => p.category === 'Lotions') || { name: "Coming Soon", price: 0 }
   },
   {
-    category: 'Health Products',
-    image: '/images/natural/15.jpg',
-    product: allProducts.find(p => p.category === 'Health Products') || { name: "Coming Soon", price: 0 }
+    category: 'Beauty',
+    image: '/images/natural/23.jpg',
+    product: allProducts.find(p => p.category === 'Skin Products') || { name: "Coming Soon", price: 0 }
   },
   {
-    category: 'Tablets',
-    image: '/images/natural/16.jpg',
-    product: allProducts.find(p => p.category === 'Tablets') || { name: "Coming Soon", price: 0 }
+    category: 'Grocery',
+    image: '/images/natural/1.jpg',
+    product: { name: "Coming Soon", price: 0 }
+  },
+  {
+    category: 'Home',
+    image: '/images/natural/2.jpg',
+    product: { name: "Coming Soon", price: 0 }
+  },
+  {
+    category: 'Baby',
+    image: '/images/natural/3.jpg',
+    product: { name: "Coming Soon", price: 0 }
+  },
+  {
+    category: 'Pets',
+    image: '/images/natural/5.jpg',
+    product: { name: "Coming Soon", price: 0 }
   },
   {
     category: 'Bedroom Products',
     image: '/images/natural/17.jpg',
     product: allProducts.find(p => p.category === 'Bedroom Products') || { name: "Coming Soon", price: 0 }
-  },
-  {
-    category: 'Health Products',
-    image: '/images/natural/18.jpg',
-    product: allProducts.find(p => p.category === 'Health Products') || { name: "Coming Soon", price: 0 }
   }
 ];
 
@@ -131,8 +146,8 @@ const features = [
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { addToCart } = useCart();
-  const [addedToCart, setAddedToCart] = useState<{[key: string]: boolean}>({});
-  const [wishlist, setWishlist] = useState<{[key: string]: boolean}>({});
+  const [addedToCart, setAddedToCart] = useState<{ [key: string]: boolean }>({});
+  const [wishlist, setWishlist] = useState<{ [key: string]: boolean }>({});
 
   // Carousel refs for sliding
   const testimonialsRef = useRef<HTMLDivElement>(null);
@@ -166,7 +181,7 @@ export default function Home() {
       quantity: 1
     });
     setAddedToCart(prev => ({ ...prev, [product.id]: true }));
-    
+
     // Reset button after 2 seconds
     setTimeout(() => {
       setAddedToCart(prev => ({ ...prev, [product.id]: false }));
@@ -182,7 +197,7 @@ export default function Home() {
       {/* Hero Slider - Clean images sliding left */}
       <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1351/353' }}>
         <div className="flex transition-transform duration-1000 ease-in-out h-full"
-             style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
           {slides.map((slide, index) => (
             <div key={index} className="min-w-full h-full">
               <img
@@ -225,14 +240,14 @@ export default function Home() {
         {/* Header - Centered Layout */}
         <div className="flex justify-center items-center gap-6 mb-6">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Shop by Category</h2>
-          <Link 
-            to="/products" 
+          <Link
+            to="/products"
             className="border border-[#dd2581] text-[#dd2581] px-3 py-1 rounded-full text-xs font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
           >
             View More
           </Link>
         </div>
-        
+
         {/* Horizontal Scrollable Categories */}
         <div className="relative bg-white rounded-2xl shadow-lg p-4 sm:p-6">
           <motion.button
@@ -246,10 +261,10 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
             </svg>
           </motion.button>
-          
+
           <div
             ref={categoryRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-10"
+            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-10 no-scrollbar"
             style={{ scrollSnapType: 'x mandatory' }}
           >
             {categoryProducts.map((item, idx) => (
@@ -273,7 +288,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          
+
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -293,14 +308,14 @@ export default function Home() {
         {/* Header - Centered Layout */}
         <div className="flex justify-center items-center gap-6 mb-6">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Trending Items</h2>
-          <Link 
-            to="/products" 
+          <Link
+            to="/products"
             className="border border-[#dd2581] text-[#dd2581] px-3 py-1 rounded-full text-xs font-medium hover:bg-[#dd2581] hover:text-white transition-all duration-300"
           >
             View More
           </Link>
         </div>
-        
+
         {/* Horizontal Scrollable Trending Products */}
         <div className="relative">
           <motion.button
@@ -314,86 +329,84 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
             </svg>
           </motion.button>
-          
+
           <div
             ref={trendingRef}
-            className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-10"
+            className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-10 no-scrollbar"
             style={{ scrollSnapType: 'x mandatory' }}
           >
             {trendingProducts.map((product, idx) => (
               product && (
-              <div
-                key={product.id}
-                className="min-w-[140px] sm:min-w-[160px] lg:min-w-[200px] bg-white rounded-xl shadow-lg overflow-hidden snap-center hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100 flex flex-col"
-              >
-                {/* Product Image Container */}
-                <div className="relative p-2 sm:p-3 pb-2">
-                  <div className="relative bg-gray-50 rounded-lg overflow-hidden">
-                    <Link to={`/shop-detail/${product.id}`} className="block">
-                      <img 
-                        src={product.image} 
-                        alt={product.name} 
-                        className="w-full h-auto object-contain max-h-24 sm:max-h-28 lg:max-h-36 mx-auto block"
-                        style={{ aspectRatio: 'auto' }}
-                      />
-                    </Link>
-                    
-                    {/* TRENDING Badge */}
-                    <div className="absolute top-1 left-1 sm:top-2 sm:left-2">
-                      <span className="bg-[#f98203] text-white px-1 sm:px-2 py-0.5 rounded-full text-xs font-bold">
-                        NEW
-                      </span>
-                    </div>
-                    
-                    {/* Wishlist Heart */}
-                    <button
-                      onClick={() => toggleWishlist(product.id)}
-                      className="absolute top-1 right-1 sm:top-2 sm:right-2 p-1 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
-                    >
-                      <Heart 
-                        className={`w-3 h-3 sm:w-4 sm:h-4 ${
-                          wishlist[product.id] 
-                            ? 'fill-red-500 text-red-500' 
+                <div
+                  key={product.id}
+                  className="min-w-[140px] sm:min-w-[160px] lg:min-w-[200px] bg-white rounded-xl shadow-lg overflow-hidden snap-center hover:shadow-xl transition-all duration-300 flex-shrink-0 border border-gray-100 flex flex-col"
+                >
+                  {/* Product Image Container */}
+                  <div className="relative p-2 sm:p-3 pb-2">
+                    <div className="relative bg-gray-50 rounded-lg overflow-hidden">
+                      <Link to={`/shop-detail/${product.id}`} className="block">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-auto object-contain max-h-24 sm:max-h-28 lg:max-h-36 mx-auto block"
+                          style={{ aspectRatio: 'auto' }}
+                        />
+                      </Link>
+
+                      {/* TRENDING Badge */}
+                      <div className="absolute top-1 left-1 sm:top-2 sm:left-2">
+                        <span className="bg-[#f98203] text-white px-1 sm:px-2 py-0.5 rounded-full text-xs font-bold">
+                          NEW
+                        </span>
+                      </div>
+
+                      {/* Wishlist Heart */}
+                      <button
+                        onClick={() => toggleWishlist(product.id)}
+                        className="absolute top-1 right-1 sm:top-2 sm:right-2 p-1 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
+                      >
+                        <Heart
+                          className={`w-3 h-3 sm:w-4 sm:h-4 ${wishlist[product.id]
+                            ? 'fill-red-500 text-red-500'
                             : 'text-gray-400'
+                            }`}
+                        />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Product Info */}
+                  <div className="px-2 sm:px-3 pb-2 sm:pb-3 flex-1 flex flex-col">
+                    <Link to={`/shop-detail/${product.id}`} className="block mb-2">
+                      <h3 className="text-xs sm:text-sm font-medium text-gray-800 hover:text-[#dd2581] transition-colors line-clamp-2 leading-tight text-center">
+                        {product.name}
+                      </h3>
+                    </Link>
+
+                    {/* Pricing Section */}
+                    <div className="mb-2 flex-1">
+                      <div className="text-sm sm:text-base font-bold text-[#dd2581] text-center">
+                        ${product.price.toFixed(2)}
+                      </div>
+                    </div>
+
+                    {/* Add to Cart Button */}
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className={`w-full flex items-center justify-center space-x-1 py-1.5 sm:py-2 px-1 sm:px-2 rounded-lg font-semibold text-xs transition-all duration-300 ${addedToCart[product.id]
+                        ? 'bg-green-600 text-white'
+                        : 'bg-[#dd2581] text-white hover:bg-[#f98203] hover:shadow-md'
                         }`}
-                      />
+                    >
+                      <ShoppingCart className="w-3 h-3 flex-shrink-0" />
+                      <span className="whitespace-nowrap text-xs">{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
                     </button>
                   </div>
                 </div>
-                
-                {/* Product Info */}
-                <div className="px-2 sm:px-3 pb-2 sm:pb-3 flex-1 flex flex-col">
-                  <Link to={`/shop-detail/${product.id}`} className="block mb-2">
-                    <h3 className="text-xs sm:text-sm font-medium text-gray-800 hover:text-[#dd2581] transition-colors line-clamp-2 leading-tight text-center">
-                      {product.name}
-                    </h3>
-                  </Link>
-                  
-                  {/* Pricing Section */}
-                  <div className="mb-2 flex-1">
-                    <div className="text-sm sm:text-base font-bold text-[#dd2581] text-center">
-                      ${product.price.toFixed(2)}
-                    </div>
-                  </div>
-                  
-                  {/* Add to Cart Button */}
-                  <button
-                    onClick={() => handleAddToCart(product)}
-                    className={`w-full flex items-center justify-center space-x-1 py-1.5 sm:py-2 px-1 sm:px-2 rounded-lg font-semibold text-xs transition-all duration-300 ${
-                      addedToCart[product.id] 
-                        ? 'bg-green-600 text-white' 
-                        : 'bg-[#dd2581] text-white hover:bg-[#f98203] hover:shadow-md'
-                    }`}
-                  >
-                    <ShoppingCart className="w-3 h-3 flex-shrink-0" />
-                    <span className="whitespace-nowrap text-xs">{addedToCart[product.id] ? 'ADDED!' : 'ADD TO CART'}</span>
-                  </button>
-                </div>
-              </div>
               )
             ))}
           </div>
-          
+
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -508,7 +521,7 @@ export default function Home() {
           </button>
           <div
             ref={testimonialsRef}
-            className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+            className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 no-scrollbar"
             style={{ scrollSnapType: "x mandatory" }}
           >
             {customerReviews.map((t) => (

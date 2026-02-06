@@ -1,7 +1,7 @@
-// Easy-to-edit Health Products data structure
-// To modify products: simply edit the id, name, price, image, category, and description fields below
+import { generatePlaceholders } from '../productUtils';
 
 export const healthProducts = [
+  ...generatePlaceholders('Health Products', 1000, 500),
   {
     id: 'health-1',
     name: 'Organika Collagen Type 1,2,3',
@@ -158,7 +158,7 @@ export const healthProducts = [
     id: 'health-20',
     name: "Naka Ultra Collagen High Potency Ashwagandha",
     price: 28.67,
-    image:'/images/natural images/Naka Ultra Collagen.jpg',
+    image: '/images/natural images/Naka Ultra Collagen.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -166,7 +166,7 @@ export const healthProducts = [
     id: 'health-21',
     name: "Multi Collagene Corps Entier",
     price: 28.67,
-    image:'/images/natural images/Multi Collagene Corps Entier.jpg',
+    image: '/images/natural images/Multi Collagene Corps Entier.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -174,7 +174,7 @@ export const healthProducts = [
     id: 'health-22',
     name: "All Max Grass Fed & Pasture raised collagen",
     price: 27.68,
-    image:'/images/natural images/All Max Grass Fed and Pasture Raised Collagen.jpg',
+    image: '/images/natural images/All Max Grass Fed and Pasture Raised Collagen.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -182,7 +182,7 @@ export const healthProducts = [
     id: 'health-23',
     name: "Resveratrol  700 mg",
     price: 9.81,
-    image:'/images/natural images/Resveratrol 700mg.jpg',
+    image: '/images/natural images/Resveratrol 700mg.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -190,7 +190,7 @@ export const healthProducts = [
     id: 'health-24',
     name: "Well Bet X Berberine",
     price: 12.83,
-    image:'/images/natural images/Well Bet X Berberine.jpg',
+    image: '/images/natural images/Well Bet X Berberine.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -198,7 +198,7 @@ export const healthProducts = [
     id: 'health-25',
     name: "Tumeric Curcumin Super Vitamin C Serum",
     price: 9.99,
-    image:'/images/natural images/Well Bet X Berberine.jpg',
+    image: '/images/natural images/Well Bet X Berberine.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -206,7 +206,7 @@ export const healthProducts = [
     id: 'health-26',
     name: "Extra Tumeric Platinum + Black Pepper",
     price: 9.99,
-    image:'/images/natural images/Extra Tumeric Platinum + Black Pepper.jpg',
+    image: '/images/natural images/Extra Tumeric Platinum + Black Pepper.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -214,7 +214,7 @@ export const healthProducts = [
     id: 'health-27',
     name: "Senallis Hyaluronic Acid Serum",
     price: 8.29,
-    image:'/images/natural images/Senallis Hyaluronic  Acid Serum.jpg',
+    image: '/images/natural images/Senallis Hyaluronic  Acid Serum.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -222,7 +222,7 @@ export const healthProducts = [
     id: 'health-28',
     name: "Colgate Mouth Wash",
     price: 5.30,
-    image:'/images/natural images/Colagate MouthWash.jpg',
+    image: '/images/natural images/Colagate MouthWash.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -230,7 +230,7 @@ export const healthProducts = [
     id: 'health-29',
     name: "Iron Gummies",
     price: 8.29,
-    image:'/images/natural images/Iron Gummies.jpg',
+    image: '/images/natural images/Iron Gummies.jpg',
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -238,7 +238,7 @@ export const healthProducts = [
     id: 'health-30',
     name: "Nature's Bounty",
     price: 10.56,
-    image:"/images/natural images/Nature's Bounty.jpg",
+    image: "/images/natural images/Nature's Bounty.jpg",
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -246,7 +246,7 @@ export const healthProducts = [
     id: 'health-31',
     name: "Purefuly Benfotiamine",
     price: 11.31,
-    image:"/images/natural images/Purefully Benfotiamine.jpg",
+    image: "/images/natural images/Purefully Benfotiamine.jpg",
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -254,7 +254,7 @@ export const healthProducts = [
     id: 'health-32',
     name: "Genacol Aminolock Collagen",
     price: 30.18,
-    image:"/images/natural images/Genacol Amino lock Collagen.jpg",
+    image: "/images/natural images/Genacol Amino lock Collagen.jpg",
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -262,7 +262,7 @@ export const healthProducts = [
     id: 'health-33',
     name: "Tumeric Bioperine Garlic Ginger",
     price: 9.07,
-    image:"/images/natural images/Tumeric Bioperine Garlic Ginger.jpg",
+    image: "/images/natural images/Tumeric Bioperine Garlic Ginger.jpg",
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -270,7 +270,7 @@ export const healthProducts = [
     id: 'health-34',
     name: "Organika Enhanced Collagen",
     price: 27.15,
-    image:"/images/natural images/Organika Enhanced Colagen.jpg",
+    image: "/images/natural images/Organika Enhanced Colagen.jpg",
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   },
@@ -278,7 +278,7 @@ export const healthProducts = [
     id: 'health-35',
     name: "Effective Appetite Suppresant",
     price: 9.81,
-    image:"/images/natural images/Organika Enhanced Colagen.jpg",
+    image: "/images/natural images/Organika Enhanced Colagen.jpg",
     category: 'Health Products',
     description: 'Anti-inflammatory support with turmeric and curcumin'
   }

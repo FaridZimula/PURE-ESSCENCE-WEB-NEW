@@ -1,7 +1,11 @@
+import { Product } from '../../types';
+import { generatePlaceholders } from '../productUtils';
+
 // Easy-to-edit Bedroom Products data structure
 // To modify products: simply edit the id, name, price, image, category, and description fields below
 
-export const bedroomProducts = [
+export const bedroomProducts: Product[] = [
+  ...generatePlaceholders('Bedroom Products', 1000, 500),
   {
     id: 'bedroom-1',
     name: 'Men\'s Massage Cream',
